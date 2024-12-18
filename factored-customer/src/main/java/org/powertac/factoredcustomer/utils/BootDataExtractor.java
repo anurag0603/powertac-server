@@ -10,6 +10,7 @@ import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import javax.xml.XMLConstants;
 
 
 /**
@@ -38,6 +39,7 @@ public class BootDataExtractor
       DataOutputStream outStream = new DataOutputStream(new FileOutputStream(out));
 
       DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+      docBuilderFactory.setFeature("http://javax.xml.XMLConstants/feature/secure-processing", true);
       DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
       Document doc = docBuilder.parse(inStream);
 

@@ -59,6 +59,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.xpath.*;
+import javax.xml.XMLConstants;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -596,6 +597,7 @@ public class CompetitionSetupService
   private Document getDocument (URL bootUrl)
   {
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    factory.setFeature("http://javax.xml.XMLConstants/feature/secure-processing", true);
     factory.setNamespaceAware(true);
     DocumentBuilder builder;
     Document doc = null;

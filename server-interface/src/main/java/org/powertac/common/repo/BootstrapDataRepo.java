@@ -36,6 +36,7 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
+import javax.xml.XMLConstants;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -196,6 +197,7 @@ public class BootstrapDataRepo implements DomainRepo
   private Document getDocument (URL bootUrl)
   {
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    factory.setFeature("http://javax.xml.XMLConstants/feature/secure-processing", true);
     factory.setNamespaceAware(true);
     DocumentBuilder builder;
     Document doc = null;

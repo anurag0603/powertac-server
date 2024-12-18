@@ -69,6 +69,7 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import javax.xml.XMLConstants;
 
 @Service
 public class WeatherService extends TimeslotPhaseProcessor
@@ -588,6 +589,7 @@ implements InitializationService
       try {
         DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory
             .newInstance();
+        docBuilderFactory.setFeature("http://javax.xml.XMLConstants/feature/secure-processing", true);
         DocumentBuilder docBuilderRead = docBuilderFactory.newDocumentBuilder();
         Document documentRead = docBuilderRead.parse(new File(fileName));
         Node rootNode = documentRead.getDocumentElement();

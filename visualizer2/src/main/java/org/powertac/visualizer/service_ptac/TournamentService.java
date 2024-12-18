@@ -35,6 +35,7 @@ import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.XMLConstants;
 
 import java.io.InputStream;
 import java.lang.management.ManagementFactory;
@@ -282,6 +283,7 @@ public class TournamentService implements MessageListener {
             InputStream input = conn.getInputStream();
             log.info("Parsing message..");
             DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+            docBuilderFactory.setFeature("http://javax.xml.XMLConstants/feature/secure-processing", true);
             DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(input);
             doc.getDocumentElement().normalize();
